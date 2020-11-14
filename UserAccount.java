@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class UserAccount {
 
-	private String username = "";
-	private String password ="";
-	private boolean admin = false;
-	private String gender = "";
-	private String nationality = "";
-	private String email = "";
+	private String username;
+	private String password;
+	private boolean admin;
+	private String gender;
+	private String nationality;
+	private String email;
 	
 	
 	public UserAccount(String username, String password, boolean admin, String gender, String nationality, String email) {
@@ -22,6 +22,12 @@ public class UserAccount {
 	}
 
 	public UserAccount() {
+		this.username = "";
+		this.password = "";
+		this.admin = false;
+		this.gender = "";
+		this.nationality = "";
+		this.email = "";
 	}
 
 	public boolean isAdmin() {
