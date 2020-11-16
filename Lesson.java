@@ -1,6 +1,4 @@
-import java.sql.Time;
-
-public enum LessonType{TUTORIAL, LECTURE, LAB, SEMINAR};
+import java.time.LocalTime;
 
 public class Lesson{
     protected int index;
@@ -8,10 +6,10 @@ public class Lesson{
     protected LessonType type;
     protected String week;
     protected String day;
-    protected Time startTime;
-    protected Time endTime;
+    protected LocalTime startTime;
+    protected LocalTime endTime;
 
-    public Lesson(int index, String venue, String type, String week, String day, Time startTime, Time endTime){
+    public Lesson(int index, String venue, String type, String week, String day, LocalTime startTime, LocalTime endTime){
         this.index = index;
         this.venue = venue;
         this.type = LessonType.valueOf(type.toUpperCase());
