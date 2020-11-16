@@ -49,8 +49,11 @@ public class UserAccount {
 		}
 	}
 	
-	public String getPassword() {
-		return this.password;
+	public Boolean authenticatePassword(String pw) {
+		if (pw == this.password){
+			return true;
+		}
+		return false;
 	}	
 	
 	public String getUsername() {
