@@ -17,8 +17,10 @@ public class AdminAccount extends UserAccount{
 		
 	}
 	
-	public void addStudent(String username, String matricnumber, String gender, String nationality, String email) {
-		StudentAccount newstudent = new StudentAccount(username, matricnumber, gender, nationality, email);
+	public void addStudent(String username, String gender, String nationality, String email, int auLimit, String matricnumber) {
+		String password = "";
+		Boolean admin = false;
+		StudentAccount newstudent = new StudentAccount(username, password, admin, gender, nationality, email, auLimit, matricnumber);
 		UserList.addAccount(newstudent);
 		
 		
