@@ -5,10 +5,7 @@ import java.util.Scanner;
 public class application {
 	
 	public static boolean authenticatePassword(UserAccount user, String password) {
-		if (user.getPassword() == password)
-			return true;
-		else
-			return false;
+		return user.authenticatePassword(password);
 	}
 	
 	public static String promptUsername() {
