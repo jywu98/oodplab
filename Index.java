@@ -1,21 +1,16 @@
 package project;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Index {
-
 	protected int index;
 	protected int classLimit;
-	protected String venue;
-	protected String week;
-	protected String day;
+	protected ArrayList<Lesson> indexLessons;
 	
-	public Index(int index, int classLimit, String venue, String week, String day) {
+	public Index(int index, int classLimit) {
 		this.index = index;
 		this.classLimit = classLimit;
-		this.venue = venue;
-		this.week = week;
-		this.day = day;
+		indexLessons = new ArrayList<Lesson>();
 	}
 	
 	public int getIndex() {
@@ -34,19 +29,11 @@ public class Index {
 		this.classLimit = classLimit;
 	}
 	
-	public String getWeek() {
-		return week;
-	}
-
-	public void setWeek(String week) {
-		this.week = week;
+	public ArrayList<Lesson> getLessons(){
+		return indexLessons;
 	}
 	
-	public String getDay() {
-		return day;
-	}
-
-	public void setDay(String day) {
-		this.day = day;
-	}
+	public void addLesson(Lesson lesson){
+		indexLessons.add(lesson);
+	}	
 }
