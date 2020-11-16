@@ -27,34 +27,47 @@ public class AdminAccount extends UserAccount{
 		
 	}
 	
-	public void addCourse() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter course code:");
-		String coursecode = sc.next();
+	public void addCourse(String coursecode, String courseName, int au) {
+		Course newcourse = new Course( coursecode, courseName, au);
+		CourseLinkList.addCourse(newcourse);
 	}
 	
-	public void updateCourse() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter course code: ");
-		String coursecode = sc.next();
+	public void updateCourse(Course mycourse, String coursecode) {
+
+		//What is being changed? Is this set in the application class?
+		//Assume change is coursecode
+		mycourse.setCourseCode(coursecode);
 		
 	}
 	
 	public void printEnrollees(int number) {
-		int head = x;
-		while (head!= null)
-		{
-			System.out.println(head.key);
-			head = head.next();
-		}
+		
+		
+		
+		
+		
+		
 	}
 	
 	public void printEnrollees(String courseCode) {
-		int head = x;
-		while (head!= null)
+		for (int i = 0; i< CourseLinkList.size(); i++)
 		{
-			System.out.println(head.key);
-			head = head.next();
+			if (CourseLinkList.get(i).getCourseCode == courseCode)
+			{
+				Course mycourse = CourseLinkList.get(i);
+				for (int j = 0; i < indexLinkList.size(); j++)
+				{
+					if (indexLinkList.get(j).getIndex() == mycourse.getIndex())
+					{
+						for (int k = 0; k < RegisteredLinkList.size(); k++)
+						{
+							System.out.println("Name: " + RegisteredLinkList.get(k).getUserName());	
+						}
+					}
+
+				}
+					
+			}
 		}
 	}
 	
