@@ -1,19 +1,19 @@
 package project;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Course {
 
 	protected String courseCode;
 	protected String courseName;
 	protected int au;
-	private ArrayList<Index> index;
+	protected ArrayList<Index> courseIndex;
 	
-	public Course(String courseCode, String courseName, int au, ArrayList<Index> index) {
+	public Course(String courseCode, String courseName, int au) {
 		this.courseCode = courseCode;
 		this.courseName = courseName;
 		this.au = au;
-		this.index = index;
+		courseIndex = new ArrayList<Index>();
 	}
 	
 	public String getCourseCode() {
@@ -41,12 +41,10 @@ public class Course {
 	}
 
 	public ArrayList<Index> getIndex() {
-		return index;
-	}
-
-	public void setIndex(ArrayList<Index> index) {
-		this.index = index;
+		return courseIndex;
 	}
 	
-	
+	public void addIndex(Index index_){
+		courseIndex.add(index_);
+	}	
 }
