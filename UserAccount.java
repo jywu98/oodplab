@@ -39,18 +39,19 @@ public class UserAccount {
 
 	
 	public int checkVacancies(int number) {
-		if (getCourse(number).getVacancy()<=0)
+		for (int i = 0; i< indexList.size(); i++)
 		{
-			System.out.println("There are no vacancies for this course.");
+			if (indexList.get(i).getIndex == number)
+			{
+				return indexList.get(i).getVacancies;
+			}
 		}
-		else
-		{
-			
-		}
+	
 	}
 	
 	public Boolean authenticatePassword(String pw) {
-		if (pw == this.password){
+		if (pw == this.password)
+		{
 			return true;
 		}
 		return false;
