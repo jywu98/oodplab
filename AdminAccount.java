@@ -17,12 +17,9 @@ public class AdminAccount extends UserAccount{
 		
 	}
 	
-	public void addStudent() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Student username:");
-		String username = sc.next();
-		System.out.println("Enter Student password: ");
-		String password = sc.next();
+	public void addStudent(String username, String matricnumber, String gender, String nationality, String email) {
+		StudentAccount newstudent = new StudentAccount(username, matricnumber, gender, nationality, email);
+		UserList.addAccount(newstudent);
 		
 		
 		
