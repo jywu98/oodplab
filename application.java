@@ -24,11 +24,29 @@ public class application {
 	
 	public static UserAccount findUser(String username) {
 		for (int i=0; i<UserList.size(); i++) {
-			if (UserList.get(i).getUsername == username) {
+			if (UserList.get(i).getUsername() == username) {
 				return UserList.get(i);
 			}
 		}
-    }
+    	}
+	
+	public static Course findCourse(String coursecode){
+		for (int i = 0; i < CourseList.size(); i++){
+			if (CourseList.get(i).getCourseCode() == coursecode){
+				return CourseList.get(i)
+			}
+		}
+		System.out.println("Error - invalid course code!");
+	}
+	
+	public static Index findIndex(int index_){
+		for (int i = 0; i < IndexList.size(); i++){
+			if (IndexList.get(i).getIndex() == index_){
+				returnIndexList.get(i)
+			}
+		}
+		System.out.println("Error - invalid index!");
+	}
 	
 	public static void main(String[] args) {
 			
