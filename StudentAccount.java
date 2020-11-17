@@ -21,6 +21,18 @@ public class StudentAccount extends UserAccount{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter course code: ");
 		String coursecode = sc.next();
+		for (int i = 0; i< courseLinkList.size(); i++)
+		{
+			if (courseLinkList.get(i) == coursecode)
+			{
+				System.out.println("Course Code: " + coursecode);
+				for (int j = 0; j< IndexLinklist.size(); j++)
+				{
+					System.out.println("Index :" + IndexLinkList.get(j).getIndex()	);
+				}
+				
+			}
+		}
 	}
 	
 	
