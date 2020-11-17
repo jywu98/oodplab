@@ -40,6 +40,14 @@ public class AdminAccount extends UserAccount{
 		
 	}
 	
+	public void updateCourse(Index myIndex, int index) {
+
+		//What is being changed? Is this set in the application class?
+		//Assume change is index
+		myIndex.setIndex(index);
+		
+	}
+	
 	public void printEnrollees(int number) {
 		
 		
@@ -55,13 +63,13 @@ public class AdminAccount extends UserAccount{
 			if (CourseLinkList.get(i).getCourseCode == courseCode)
 			{
 				Course mycourse = CourseLinkList.get(i);
-				for (int j = 0; i < indexLinkList.size(); j++)
+				for (int j = 0; i < indexLinkedList.size(); j++) //How to call the specific index arraylist which is an attribute of course class?
 				{
 					if (indexLinkList.get(j).getIndex() == mycourse.getIndex())
 					{
 						for (int k = 0; k < RegisteredLinkList.size(); k++)
 						{
-							System.out.println("Name: " + RegisteredLinkList.get(k).getUserName());	
+							System.out.println("Name: " + RegisteredLinkList.get(k).getUserName());	//No name 
 						}
 					}
 
