@@ -1,89 +1,45 @@
 package teamassignment;
 
-import java.util.Scanner;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
-public class application {
+public class accountLinkList {
 	
-	public static boolean authenticatePassword(UserAccount user, String password) {
-		return user.authenticatePassword(password);
+	private ArrayList<UserAccount> userlist;
+	
+	public accountLinkList() {
+		this.userlist = new ArrayList<UserAccount>();
 	}
 	
-	public static String promptUsername() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Username: ");
-		String username = sc.next();
-		return username;
+	public void createUserlist() throws Exception 
+		{
+	        try
+	        {
+	            FileInputStream fis = new FileInputStream("userData");
+	            ObjectInputStream ois = new ObjectInputStream(fis);
+	 
+	            userlist = (ArrayList) ois.readObject();
+	 
+	            ois.close();
+	            fis.close();
+	            
+	        } 
+	        catch (IOException e) 
+	        {
+	            System.out.println(e.getMessage());
+	        } 
+		}
+	public ArrayList<UserAccount> getUserlist(){
+		return userlist;
 	}
 	
-	public static String promptPassword() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Password: ");
-		String password = sc.next();
-		return password;
+	public void addAccount(UserAccount user) {
+		userlist.add(user);
 	}
 	
-	public static UserAccount findUser(String username) {
-		for (int i=0; i<UserList.size(); i++) {
-			if (UserList.get(i).getUsername() == username) {
-				return UserList.get(i);
-			}
-		}
-    	}
-	
-	public static Course findCourse(String coursecode){
-		for (int i = 0; i < CourseList.size(); i++){
-			if (CourseList.get(i).getCourseCode() == coursecode){
-				return CourseList.get(i)
-			}
-		}
-		System.out.println("Error - invalid course code!");
+	public void removeAccount(UserAccount user) {
+		userlist.remove(user);
 	}
-	
-	public static Index findIndex(int index_){
-		for (int i = 0; i < IndexList.size(); i++){
-			if (IndexList.get(i).getIndex() == index_){
-				returnIndexList.get(i)
-			}
-		}
-		System.out.println("Error - invalid index!");
-	}
-	
-	public static void main(String[] args) {
-			
-		String username = promptUsername();
-		UserAccount myUser = findUser(username);
-		
-		String password = promptPassword();
-		int count = 3;
-		while (authenicatePassword(myUser, password) == false) {
-			count--;
-			if (count == 0)
-				System.out.println("Exiting Program...");
-				java.lang.System.exit(0);
-			System.out.println("You have entered a wrong password! You have " + count + " tries remaining.");	
-		}
-		
-		if (myUser.isAdmin()) {
-			System.out.println("==============Welcome to=============");
-			System.out.println("============Admin Account============");
-			System.out.println("|1. Edit Access Period              |");
-			System.out.println("|2. Add Student                     |");
-			System.out.println("|3. Add Course                      |");
-			System.out.println("|4. Update Course                   |");
-			System.out.println("|5. Print Enrollees by Index        |");
-			System.out.println("|6. Print Enrollees by Course       |");
-			System.out.println("|7. Quit                            |");
-			System.out.println("=====================================");
-		}
-		else {
-			System.out.println("==============Welcome to=============");
-			System.out.println("===========Student Account===========");
-			System.out.println("|1. Check Courses                   |");
-			System.out.println("|2. Change Index                    |");
-			System.out.println("|3. Swap Index                      |");
-			System.out.println("|4. Quit                            |");
-			System.out.println("=====================================");
-		}
-	}
-
 }
