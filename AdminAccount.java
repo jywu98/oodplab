@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class AdminAccount extends UserAccount{
 
-	public AdminAccount() {
-		super();
+	public AdminAccount(String username, String password, boolean admin, String gender, String nationality, String email) {
+		super(username, password, admin, gender, nationality, email);
 	}
 	
 	public void editAccessPeriod() {
