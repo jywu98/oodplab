@@ -1,0 +1,22 @@
+package teamassignment;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class hashing {
+	
+	public String getHash(String password) throws NoSuchAlgorithmException {
+		MessageDigest digest = MessageDigest.getInstance("SHA-256");
+		digest.reset();
+		byte[] bytes = digest.digest(password.getBytes());
+        //Convert it to hexadecimal format
+        StringBuilder hash = new StringBuilder();
+        for(int i=0; i< bytes.length ;i++)
+        {
+            hash.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+        }
+        //Get complete hashed password in hex format
+        return hash.toString();
+	}
+	
+}
