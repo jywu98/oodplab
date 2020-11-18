@@ -72,4 +72,9 @@ public class Index {
 	public int getWaitlistLength(){
 		return waitlist.size();
 	}
+	
+	public void swapStudent(StudentAccount add, StudentAccount drop){
+		registeredStudents.remove(drop);
+		registeredStudents.add(add);
+	}
 }
