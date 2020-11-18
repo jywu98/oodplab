@@ -1,8 +1,10 @@
 package teamassignment;
 
+import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
-public class UserAccount {
+public class UserAccount implements Serializable{
 
 	private String username;
 	private String password;
@@ -49,8 +51,9 @@ public class UserAccount {
 	
 	}
 	
-	public Boolean authenticatePassword(String pw) {
-		if (pw == this.password)
+	public Boolean authenticatePassword(String password) throws NoSuchAlgorithmException {
+		hashing hashtool = new hashing();
+		if (this.password.equals(hashtool.getHash(password)))
 		{
 			return true;
 		}
