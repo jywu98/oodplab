@@ -1,0 +1,32 @@
+package teamassignment;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+public class binarySerialiser {
+
+
+    public static void main(String[] args) throws Exception 
+    {
+        ArrayList<UserAccount> userlist = new ArrayList<>(); 
+        hashing hashtool = new hashing();
+        
+        userlist.add(new StudentAccount("Billy", hashtool.getHash("password"), false, "Male", "Singaporean", "billyrox@ntu.edu.sg", 20, "U1234567"));
+        userlist.add(new AdminAccount("Alice", hashtool.getHash("password"), true, "Female", "Malaysian", "alice02@ntu.edu.sg"));
+ 
+        try
+        {
+            FileOutputStream fos = new FileOutputStream("userData");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(userlist);
+            oos.close();
+            fos.close();
+        } 
+        catch (IOException e) 
+        {
+            e.printStackTrace();
+        }
+    }
+}
