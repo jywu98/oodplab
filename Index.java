@@ -77,4 +77,11 @@ public class Index {
 		registeredStudents.remove(drop);
 		registeredStudents.add(add);
 	}
+	
+	public void printEnrollees(){
+		for (int i = 0; i < registeredStudents.size(); i++){
+			StudentAccount current = registeredStudents.get(i);
+			System.out.println(current.getName() + ", " + current.getGender() + ", " + current.getNationality());
+		}	
+	}	
 }
