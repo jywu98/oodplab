@@ -9,15 +9,17 @@ public class UserAccount implements Serializable{
 	private String username;
 	private String password;
 	private boolean admin;
+	private String name;
 	private String gender;
 	private String nationality;
 	private String email;
 	
 	
-	public UserAccount(String username, String password, boolean admin, String gender, String nationality, String email) {
+	public UserAccount(String username, String password, boolean admin, String name, String gender, String nationality, String email) {
 		this.username = username;
 		this.password = password;
 		this.admin = admin;
+		this.name = name;
 		this.gender = gender;
 		this.nationality = nationality;
 		this.email = email;
@@ -27,6 +29,7 @@ public class UserAccount implements Serializable{
 		this.username = "";
 		this.password = "";
 		this.admin = false;
+		this.name = "";
 		this.gender = "";
 		this.nationality = "";
 		this.email = "";
@@ -64,9 +67,20 @@ public class UserAccount implements Serializable{
 		return this.username;
 	}
 	
-	public String getEmail() {
-		return this.email;
+	public String getName() {
+		return this.name;
 	}
 	
+	public String getGender() {
+		return this.gender;
+	}
+	
+	public String getNationality() {
+		return this.nationality;
+	}
+	
+	public String getUsername() {
+		return this.username;
+	}
 	
 }
