@@ -15,8 +15,8 @@ public class IndexMasterList {
 		System.out.println("Error - invalid index!"); /*need exception handling here I think*/
 	}
   
-	public void addIndex(Index new) {
-		indexList.add(new);
+	public void addIndex(Index index_) {
+		indexList.add(index_);
 	}
 	
 	public void removeIndex(Index index_) {
