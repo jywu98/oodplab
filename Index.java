@@ -56,7 +56,7 @@ public class Index {
 		if (waitlist.size() > 0){
 			StudentAccount newstudent = waitlist.get(0);
 			registeredStudents.add(newstudent);
-			waitlist.drop(newstudent);
+			waitlist.remove(newstudent);
 			/* send email notif here */
 		}
 	}
