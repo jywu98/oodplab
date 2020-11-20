@@ -17,10 +17,8 @@ public class AdminAccount extends UserAccount{
 		
 	}
 	
-	public void addStudent(String username, String gender, String nationality, String email, int auLimit, String matricnumber) {
-		String password = "";
-		Boolean admin = false;
-		StudentAccount newstudent = new StudentAccount(username, password, admin, gender, nationality, email, auLimit, matricnumber);
+	public void addStudent(String username, String password, boolean admin, String gender, String nationality, String email, int auLimit, String matricnumber) {
+		StudentAccount newstudent = new StudentAccount(username, hashtool.getHash(password), admin, gender, nationality, email, auLimit, matricnumber);
 		UserList.addAccount(newstudent);
 		
 		
@@ -29,15 +27,15 @@ public class AdminAccount extends UserAccount{
 	
 	public void addCourse(String coursecode, String courseName, int au) {
 		Course newcourse = new Course( coursecode, courseName, au);
-		CourseLinkList.addCourse(newcourse);
+		courseLinkList.addCourse(newcourse);
 	}
 	
 	
-	public void updateCourseIndex(Course mycourse, int oldindex, int newindex) {
+	public void updateCourseIndex(courseLinkList mycourselist, int oldindex, int newindex) {
 		
-		for (int i = 0; i< mycourse.getIndex.length(); i++)
+		for (int i = 0; i< courseLinkList.length(); i++)
 		{			
-			if (mycourse.getIndex().get(i).getIndex() == oldindex) //mycourse-> get arraylist of index-> get specific index-> get index name of index ==oldindex
+			if (courseLinkList.get(i).get == oldindex) //mycourse-> get arraylist of index-> get specific index-> get index name of index ==oldindex
 			{
 				mycourse.getIndex().get(i).setIndex(newindex); //mycourse->get arraylist of index-> get specific index-> set index name of index
 			}
