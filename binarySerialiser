@@ -10,12 +10,16 @@ public class binarySerialiser {
 
     public static void main(String[] args) throws Exception 
     {
-        ArrayList<UserAccount> userlist = new ArrayList<>(); 
+        ArrayList<UserAccount> userlist = new ArrayList<>();
+        ArrayList<Course> courselist = new ArrayList<>();
         hashing hashtool = new hashing();
         
-        userlist.add(new StudentAccount("Billy", hashtool.getHash("password"), false, "Male", "Singaporean", "billyrox@ntu.edu.sg", 20, "U1234567"));
-        userlist.add(new AdminAccount("Alice", hashtool.getHash("password"), true, "Female", "Malaysian", "alice02@ntu.edu.sg"));
- 
+        userlist.add(new StudentAccount("Billy111", hashtool.getHash("password"), false, "Billy", "Male", "Singaporean", "billyrox@ntu.edu.sg", 20, "U1234567"));
+        userlist.add(new AdminAccount("Alice111", hashtool.getHash("password"), true, "Alice", "Female", "Malaysian", "alice02@ntu.edu.sg"));
+        courselist.add(new Course("AD2101", "Management Accounting", 4));
+        courselist.add(new Course("CZ2001", "Algorithms", 3));
+        courselist.add(new Course("CZ2002", "Ass", 3));
+        courselist.add(new Course("CZ2003", "Sourin", 3));
         try
         {
             FileOutputStream fos = new FileOutputStream("userData");
