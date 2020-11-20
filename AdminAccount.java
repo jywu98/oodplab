@@ -66,9 +66,9 @@ public class AdminAccount extends UserAccount{
 	}
 	
 	
-	public void printEnrollees(Index myindex) {
-		myindex.printEnrollees();
-
+	public void printEnrollees(int myindex) {
+		Index selected = IndexMasterList.getIndex(myindex);
+		selected.printEnrollees();
 	}
 	
 	public void printEnrollees(Course mycourse, String courseCode) {//This method doesnt make sense. Are we printing out literally all students taking the course? 
