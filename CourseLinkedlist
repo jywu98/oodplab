@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-public class accountLinkList {
+public class courseLinkList {
 	
-	private ArrayList<UserAccount> userlist;
+	private ArrayList<Course> courseList;
 	
 	public accountLinkList() {
-		this.userlist = new ArrayList<UserAccount>();
+		this.courselist = new ArrayList<Course>();
 	}
 	
 	public void createUserlist() throws Exception 
@@ -20,7 +20,7 @@ public class accountLinkList {
 	            FileInputStream fis = new FileInputStream("userData");
 	            ObjectInputStream ois = new ObjectInputStream(fis);
 	 
-	            userlist = (ArrayList) ois.readObject();
+	            courselist = (ArrayList) ois.readObject();
 	 
 	            ois.close();
 	            fis.close();
@@ -31,15 +31,15 @@ public class accountLinkList {
 	            System.out.println(e.getMessage());
 	        } 
 		}
-	public ArrayList<UserAccount> getUserlist(){
-		return userlist;
+	public ArrayList<Course> getCourselist(){
+		return courseList;
 	}
 	
-	public void addAccount(UserAccount user) {
-		userlist.add(user);
+	public void addCourse(Course mycourse) {
+		courselist.add(mycourse);
 	}
 	
-	public void removeAccount(UserAccount user) {
-		userlist.remove(user);
+	public void removeCourse(Course mycourse) {
+		courselist.remove(mycourse);
 	}
 }
