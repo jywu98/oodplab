@@ -32,21 +32,24 @@ public class AdminAccount extends UserAccount{
 		CourseLinkList.addCourse(newcourse);
 	}
 	
-	public void updateCourse(Course mycourse, String coursecode) {
-
-		//What is being changed? Is this set in the application class?
-		//Assume change is coursecode
-		mycourse.setCourseCode(coursecode);
+	
+	public void updateCourseIndex(Course mycourse, int oldindex, int newindex) {
+		
+		for (int i = 0; i< mycourse.getIndex.length(); i++)
+		{			
+			if (mycourse.getIndex().get(i).getIndex() == oldindex) //mycourse-> get arraylist of index-> get specific index-> get index name of index ==oldindex
+			{
+				mycourse.getIndex().get(i).setIndex(newindex); //mycourse->get arraylist of index-> get specific index-> set index name of index
+			}
+		}
 		
 	}
 	
-	public void updateCourse(Index myIndex, int index) {
-
-		//What is being changed? Is this set in the application class?
-		//Assume change is index
-		myIndex.setIndex(index);
-		
+	public void updateCourseCode(Course mycourse, String newcoursecode) {
+		mycourse.setCourseCode(newcoursecode);
+			
 	}
+	
 	
 	public void printEnrollees(int number) {
 		
