@@ -12,9 +12,9 @@ public class StudentAccount extends UserAccount{
 	}
 	
 	
-	public StudentAccount(String username, String password, boolean admin, String gender, String nationality, String email, int auLimit, String matricnumber)
+	public StudentAccount(String username, String password, boolean admin, String name, String gender, String nationality, String email, int auLimit, String matricnumber)
 	{
-		super(username, password, admin, gender, nationality, email); this.auLimit = auLimit; this.matricnumber = matricnumber;
+		super(username, password, admin, name, gender, nationality, email); this.auLimit = auLimit; this.matricnumber = matricnumber;
 	}
 	
 	public void checkCourse() {
