@@ -45,6 +45,8 @@ public class application {
 		
 		accountLinkList userlist = new accountLinkList();
 		userlist.createUserlist();
+		courseLinkList courselist = new courseLinkList();
+		courselist.createCourselist();
 		int choice;
 		int choice2;
 		Scanner sc = new Scanner(System.in);
@@ -82,7 +84,7 @@ public class application {
 							System.out.println("|1. Edit Access Period              |");
 							System.out.println("|2. Add Student                     |");
 							System.out.println("|3. Add Course                      |");
-							System.out.println("|4. Update Course                   |");
+							System.out.println("|4. Update Course	                |");
 							System.out.println("|5. Print Enrollees by Index        |");
 							System.out.println("|6. Print Enrollees by Course       |");
 							System.out.println("|7. Log out                         |");
@@ -94,8 +96,23 @@ public class application {
 							switch(choice2) {
 							case 2:
 								hashing hashtool = new hashing();
-								StudentAccount student = new StudentAccount("test", hashtool.getHash("password"), false, "Male", "ai", "test@ntu.edu.sg", 99, "U2323233Z");
+								StudentAccount student = new StudentAccount("test", hashtool.getHash("password"), false, "noname", "Male", "ai", "test@ntu.edu.sg", 99, "U2323233Z");
 								userlist.addAccount(student);
+								break;
+							case 3:
+								Course mycourse = new Course("BC2406", "Hello There", 3);
+								courselist.addCourse(mycourse);
+								break;
+								
+								
+							case 4:
+								System.out.println("Enter coursecode: ");
+								String mycoursecode = sc.next();
+								System.out.println("Enter old index: ");
+								int oldindex =  sc.nextInt();
+								System.out.println("Enter new index: ");
+								int newindex = sc.nextInt();
+								((AdminAccount) myUser).updateCourseIndex(courselist, mycoursecode, oldindex, newindex);
 								break;
 							}
 						}	
