@@ -9,7 +9,7 @@ public class IndexMasterList {
 	public Index getIndex(int index_){
 		for (int i = 0; i < indexList.size(); i++){
 			if (indexList.get(i).getIndex() == index_){
-				returnIndexList.get(i)
+				return indexList.get(i)
 			}
 		}
 		System.out.println("Error - invalid index!");
