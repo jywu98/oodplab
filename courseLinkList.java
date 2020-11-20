@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-public class accountLinkList {
+public class courseLinkList {
 	
-	private ArrayList<UserAccount> userlist;
+	private ArrayList<Course> courseList;
 	
 	public accountLinkList() {
 		this.courseList = new ArrayList<Course>();
