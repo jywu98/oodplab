@@ -1,5 +1,6 @@
 package teamassignment;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 
@@ -20,7 +21,7 @@ public class AdminAccount extends UserAccount{
 		
 	}
 	
-	public void addStudent(accountLinkList userList, String username, String password, boolean admin, String name, String gender, String nationality, String email, int auLimit, String matricnumber) {
+	public void addStudent(accountLinkList userList, String username, String password, boolean admin, String name, String gender, String nationality, String email, int auLimit, String matricnumber) throws NoSuchAlgorithmException {
 		hashing hashtool = new hashing();
 		StudentAccount newstudent = new StudentAccount(username, hashtool.getHash(password), admin, name, gender, nationality, email, auLimit, matricnumber);
 		userList.addAccount(newstudent);
