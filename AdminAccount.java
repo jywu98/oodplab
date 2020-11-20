@@ -66,7 +66,7 @@ public class AdminAccount extends UserAccount{
 	}
 	
 	public void printEnrollees(Course mycourse, String courseCode) {//This method doesnt make sense. Are we printing out literally all students taking the course? 
-		for(int i = 0; i< mycourse.getIndex().length(); i++)
+		for(int i = 0; i< mycourse.getIndex().size(); i++)
 		{
 			mycourse.getIndex().get(i).printEnrollees(); //mycourse-> get arraylist of indexes-> for each index-> print enrollees;
 			
