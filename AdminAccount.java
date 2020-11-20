@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 
 
-public class AdminAccount extends UserAccount{
-
+public class AdminAccount extends UserAccount{	
+	
+	
 	public AdminAccount(String username, String password, boolean admin, String name, String gender, String nationality, String email) {
 		super(username, password, admin, name, gender, nationality, email);
 	}
@@ -20,7 +21,8 @@ public class AdminAccount extends UserAccount{
 	}
 	
 	public void addStudent(accountLinkList userList, String username, String password, boolean admin, String name, String gender, String nationality, String email, int auLimit, String matricnumber) {
-		StudentAccount newstudent = new StudentAccount(username, hashtool.getHash(password), name, admin, gender, nationality, email, auLimit, matricnumber);
+		hashing hashtool = new hashing();
+		StudentAccount newstudent = new StudentAccount(username, hashtool.getHash(password), admin, name, gender, nationality, email, auLimit, matricnumber);
 		userList.addAccount(newstudent);
 	}
 	
