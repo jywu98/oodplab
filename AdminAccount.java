@@ -2,10 +2,12 @@ package teamassignment;
 
 import java.util.Scanner;
 
+
+
 public class AdminAccount extends UserAccount{
 
-	public AdminAccount(String username, String password, boolean admin, String gender, String nationality, String email) {
-		super(username, password, admin, gender, nationality, email);
+	public AdminAccount(String username, String password, boolean admin, String name, String gender, String nationality, String email) {
+		super(username, password, admin, name, gender, nationality, email);
 	}
 	
 	public void editAccessPeriod() {
@@ -17,43 +19,47 @@ public class AdminAccount extends UserAccount{
 		
 	}
 	
-	public void addStudent(String username, String password, boolean admin, String gender, String nationality, String email, int auLimit, String matricnumber) {
-		StudentAccount newstudent = new StudentAccount(username, hashtool.getHash(password), admin, gender, nationality, email, auLimit, matricnumber);
-		UserList.addAccount(newstudent);
+	public void addStudent(accountLinkList userList, String username, String password, boolean admin, String name, String gender, String nationality, String email, int auLimit, String matricnumber) {
+		StudentAccount newstudent = new StudentAccount(username, hashtool.getHash(password), name, admin, gender, nationality, email, auLimit, matricnumber);
+		userList.addAccount(newstudent);
 	}
 	
-	public void addCourse(String coursecode, String courseName, int au) {
-		Course newcourse = new Course( coursecode, courseName, au);
-		courseLinkList.addCourse(newcourse);
+	public void addCourse(courseLinkList mycourselist, String coursecode, String courseName, int au) {
+		Course newcourse = new Course(coursecode, courseName, au);
+		mycourselist.addCourse(newcourse);
 	}
 	
 	
 	public void updateCourseIndex(courseLinkList mycourselist, String mycoursecode, int oldindex, int newindex) {
 		
-		for (int i = 0; i< courseLinkList.size(); i++)
+		for (int i = 0; i< mycourselist.getCourseList().size(); i++)
 		{			
-			if (courseLinkList.get(i).getCourseCode() == mycoursecode) 
+			if (mycourselist.getCourseList().get(i).getCourseCode() == mycoursecode) 
 			{
-				Course mycourse = courseLinkList.get(i);
+				Course mycourse = mycourselist.getCourseList().get(i);
+				
+				for (int j = 0; j< mycourse.getIndex().size(); j++)
+				{
+					if (mycourse.getIndex().get(j).getIndex() == oldindex)
+					{
+						mycourse.getIndex().get(j).setIndex(newindex);	
+					}
+				}
 			}
 		}
 		
-		for (int j = 0; j< mycourse.getIndex.size(); j++)
-		{
-			if (mycourse.getIndex.get(j).getIndex() == oldindex)
-			{
-				mycourse.getIndex.get(j).setIndex() == newindex;	
-			}
-		}
+		
+		
+
 	}
 	
 	public void updateCourseCode(courseLinkList mycourselist, String oldcoursecode, String newcoursecode) {
 		
-		for (int i = 0; i< courseLinkList.size(); i++)
+		for (int i = 0; i< mycourselist.getCourseList().size(); i++)
 		{			
-			if (courseLinkList.get(i).getCourseCode() == oldcoursecode) 
+			if (mycourselist.getCourseList().get(i).getCourseCode() == oldcoursecode) 
 			{
-				courseLinkList.get(i).setCourseCode(newcoursecode);
+				mycourselist.getCourseList().get(i).setCourseCode(newcoursecode);
 			}
 		}
 			
@@ -72,6 +78,6 @@ public class AdminAccount extends UserAccount{
 			
 		}	
 			
-			
+	}			
 			
 }
