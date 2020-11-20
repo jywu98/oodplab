@@ -32,7 +32,7 @@ public class courseLinkList {
 	        } 
 		}
 	public ArrayList<Course> getCourseList(){
-		return userlist;
+		return courseList;
 	}
 	
 	public void addCourse(Course mycourse) {
