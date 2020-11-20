@@ -17,7 +17,7 @@ public class courseLinkList {
 		{
 	        try
 	        {
-	            FileInputStream fis = new FileInputStream("userData");
+	            FileInputStream fis = new FileInputStream("courseData");
 	            ObjectInputStream ois = new ObjectInputStream(fis);
 	 
 	            courselist = (ArrayList) ois.readObject();
