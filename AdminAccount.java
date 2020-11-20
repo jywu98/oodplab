@@ -1,148 +1,83 @@
 package teamassignment;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
-public class application {
+
+
+public class AdminAccount extends UserAccount{	
 	
-	public static String promptUsername() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Username: ");
-		String username = sc.next();
-		return username;
+	
+	public AdminAccount(String username, String password, boolean admin, String name, String gender, String nationality, String email) {
+		super(username, password, admin, name, gender, nationality, email);
 	}
 	
-	public static String promptPassword() {
+	public void editAccessPeriod() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Password: ");
-		String password = sc.next();
-		return password;
+		System.out.println("Enter initial access period date: ");
+		String initial = sc.next();
+		System.out.println("Enter final access period date: ");
+		String finaldate = sc.next();
+		
 	}
 	
-	public static UserAccount findUser(accountLinkList userlist) {
+	public void addStudent(accountLinkList userList, String username, String password, boolean admin, String name, String gender, String nationality, String email, int auLimit, String matricnumber) throws NoSuchAlgorithmException {
+		hashing hashtool = new hashing();
+		StudentAccount newstudent = new StudentAccount(username, hashtool.getHash(password), admin, name, gender, nationality, email, auLimit, matricnumber);
+		userList.addAccount(newstudent);
+	}
+	
+	public void addCourse(courseLinkList mycourselist, String coursecode, String courseName, int au) {
+		Course newcourse = new Course(coursecode, courseName, au);
+		mycourselist.addCourse(newcourse);
+	}
+	
+	
+	public void updateCourseIndex(courseLinkList mycourselist, String mycoursecode, int oldindex, int newindex) {
 		
-		String username = promptUsername();
-		boolean match = false;
-		UserAccount myUser = new UserAccount();
-		
-		while (match == false) {
-			for (int i=0; i<userlist.getUserlist().size(); i++) {
-				if (userlist.getUserlist().get(i).getUsername().equals(username)) {
-					System.out.println("Success!");
-					match = true;
-					myUser = userlist.getUserlist().get(i);
-					break;
+		for (int i = 0; i< mycourselist.getCourseList().size(); i++)
+		{			
+			if (mycourselist.getCourseList().get(i).getCourseCode() == mycoursecode) 
+			{
+				Course mycourse = mycourselist.getCourseList().get(i);
+				
+				for (int j = 0; j< mycourse.getIndex().size(); j++)
+				{
+					if (mycourse.getIndex().get(j).getIndex() == oldindex)
+					{
+						mycourse.getIndex().get(j).setIndex(newindex);	
+					}
 				}
-			System.out.println("No such user found. Please try again.");
-			username = promptUsername();
 			}
 		}
-		return myUser;
+		
 	}
 	
-	public static void main(String[] args) throws Exception {
+	public void updateCourseCode(courseLinkList mycourselist, String oldcoursecode, String newcoursecode) {
 		
-		accountLinkList userlist = new accountLinkList();
-		userlist.createUserlist();
-		courseLinkList courselist = new courseLinkList();
-		courselist.createCourselist();
-		int choice;
-		int choice2;
-		Scanner sc = new Scanner(System.in);
-	
-		do {
-			System.out.println("=============Welcome to==============");
-			System.out.println("===========Stars Planner=============");
-			System.out.println("|1. Log in                          |");
-			System.out.println("|2. Check current time and date     |");
-			System.out.println("|3. Quit                            |");
-			System.out.println("=====================================");
-			
-			System.out.println("Choose option (1-3):        ");
-			choice = sc.nextInt();
-			
-			switch(choice) {
-				case 1:
-					UserAccount myUser = findUser(userlist);
-					String password = promptPassword();
-					int count = 3;
-					while (myUser.authenticatePassword(password) == false) {
-						count--;
-						if (count == 0) {
-							System.out.println("Exiting Program...");
-							java.lang.System.exit(0);
-						}
-						System.out.println("You have entered an invalid password! You have " + count + " tries remaining.");
-						password = promptPassword();
-					}
-					System.out.println("Success!");
-					if (myUser.isAdmin()) {
-						do {
-							System.out.println("==============Welcome to=============");
-							System.out.println("============Admin Account============");
-							System.out.println("|1. Edit Access Period              |");
-							System.out.println("|2. Add Student                     |");
-							System.out.println("|3. Add Course                      |");
-							System.out.println("|4. Update Course Index             |");
-							System.out.println("|5. Print Enrollees by Index        |");
-							System.out.println("|6. Print Enrollees by Course       |");
-							System.out.println("|7. Log out                         |");
-							System.out.println("=====================================");
-							
-							System.out.println("Choose option (1-7):        ");
-							choice2 = sc.nextInt();
-							
-							switch(choice2) {
-							case 2:
-								hashing hashtool = new hashing();
-								StudentAccount student = new StudentAccount("test", hashtool.getHash("password"), false, "noname", "Male", "ai", "test@ntu.edu.sg", 99, "U2323233Z");
-								userlist.addAccount(student);
-								break;
-							case 4:
-								System.out.println("Enter coursecode: ");
-								String mycoursecode = sc.next();
-								System.out.println("Enter old index: ");
-								int oldindex =  sc.nextInt();
-								System.out.println("Enter new index: ");
-								int newindex = sc.nextInt();
-								((AdminAccount) myUser).updateCourseIndex(courselist, mycoursecode, oldindex, newindex);
-								
-							}
-						}	
-						while (choice2 < 7);
-					}
-					else {
-						do {
-						System.out.println("==============Welcome to=============");
-						System.out.println("===========Student Account===========");
-						System.out.println("|1. Check Courses                   |");
-						System.out.println("|2. Change Index                    |");
-						System.out.println("|3. Swap Index                      |");
-						System.out.println("|4. Log out                         |");
-						System.out.println("=====================================");
-						
-						System.out.println("Choose option (1-4):        ");
-						choice2 = sc.nextInt();
-						
-						switch(choice2) {
-						case 1:
-							break;
-						}
-						}
-						while (choice2 < 4);
-					}
-					break;
-				case 2:
-				   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-				   LocalDateTime now = LocalDateTime.now();  
-				   System.out.println(dtf.format(now));  
-				   break;
+		for (int i = 0; i< mycourselist.getCourseList().size(); i++)
+		{			
+			if (mycourselist.getCourseList().get(i).getCourseCode() == oldcoursecode) 
+			{
+				mycourselist.getCourseList().get(i).setCourseCode(newcoursecode);
 			}
-		} 
-		while(choice < 3);
-		
-		System.out.print("Thank you for using Stars Planner!");
+		}
+			
 	}
-		
+	
+	
+	public void printEnrollees(Index myindex) {
+		myindex.printEnrollees();
+
+	}
+	
+	public void printEnrollees(Course mycourse, String courseCode) {//This method doesnt make sense. Are we printing out literally all students taking the course? 
+		for(int i = 0; i< mycourse.getIndex().size(); i++)
+		{
+			mycourse.getIndex().get(i).printEnrollees(); //mycourse-> get arraylist of indexes-> for each index-> print enrollees;
+			
+		}	
+			
+	}			
+			
 }
