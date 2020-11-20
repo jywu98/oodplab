@@ -12,7 +12,8 @@ public class IndexMasterList {
 				returnIndexList.get(i)
 			}
 		}
-		System.out.println("Error - invalid index!"); /*need exception handling here I think*/
+		System.out.println("Error - invalid index!");
+		return null;
 	}
   
 	public void addIndex(Index index_) {
