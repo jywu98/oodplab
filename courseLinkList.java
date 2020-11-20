@@ -35,6 +35,15 @@ public class courseLinkList {
 		return courseList;
 	}
 	
+	public Course findCourse(String coursecode){
+		for (int i = 0; i < courseList.size(); i++){
+			if (courseList.get(i).getCourseCode() == coursecode){
+				return courseList.get(i)
+			}
+		}
+		System.out.println("Error - invalid course code!");
+	}
+	
 	public void addCourse(Course mycourse) {
 		courseList.add(mycourse);
 	}
