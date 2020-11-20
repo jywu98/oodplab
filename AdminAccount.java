@@ -51,37 +51,18 @@ public class AdminAccount extends UserAccount{
 	}
 	
 	
-	public void printEnrollees(int number) {
-		
-		
-		
-		
-		
-		
-	}
-	
-	public void printEnrollees(String courseCode) {
-		for (int i = 0; i< CourseLinkList.size(); i++)
-		{
-			if (CourseLinkList.get(i).getCourseCode == courseCode)
-			{
-				Course mycourse = CourseLinkList.get(i);
-				for (int j = 0; i < indexLinkedList.size(); j++) //How to call the specific index arraylist which is an attribute of course class?
-				{
-					if (indexLinkList.get(j).getIndex() == mycourse.getIndex())
-					{
-						for (int k = 0; k < RegisteredLinkList.size(); k++)
-						{
-							System.out.println("Name: " + RegisteredLinkList.get(k).getUserName());	//No name 
-						}
-					}
+	public void printEnrollees(Index myindex) {
+		myindex.printEnrollees();
 
-				}
-					
-			}
-		}
 	}
 	
-	
-	
+	public void printEnrollees(Course mycourse, String courseCode) {//This method doesnt make sense. Are we printing out literally all students taking the course? 
+		for(int i = 0; i< mycourse.getIndex().length(); i++)
+		{
+			mycourse.getIndex().get(i).printEnrollees(); //mycourse-> get arraylist of indexes-> for each index-> print enrollees;
+			
+		}	
+			
+			
+			
 }
