@@ -9,7 +9,7 @@ public class courseLinkList {
 	
 	private ArrayList<Course> courseList;
 	
-	public accountLinkList() {
+	public courseLinkList() {
 		this.courseList = new ArrayList<Course>();
 	}
 	
