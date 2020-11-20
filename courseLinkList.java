@@ -34,15 +34,15 @@ public class courseLinkList {
 	public ArrayList<Course> getCourseList(){
 		return courseList;
 	}
-	
-	public Course findCourse(String coursecode){
-		for (int i = 0; i < courseList.size(); i++){
-			if (courseList.get(i).getCourseCode() == coursecode){
-				return courseList.get(i)
-			}
-		}
-		System.out.println("Error - invalid course code!");
-	}
+	//Method doesnt work if getcoursecode != coursecode
+	//public Course findCourse(String coursecode){
+	//	for (int i = 0; i < courseList.size(); i++){
+	//		if (courseList.get(i).getCourseCode() == coursecode){
+	//			return courseList.get(i)
+	//		}
+	//	}
+	//	System.out.println("Error - invalid course code!");
+	//}
 	
 	public void addCourse(Course mycourse) {
 		courseList.add(mycourse);
