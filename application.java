@@ -159,6 +159,7 @@ public class application {
 									break;
 								}
 								myUser.switchIndex(currentIndex, newIndex);
+								break;
 						}
 						}
 						while (choice2 < 4);
