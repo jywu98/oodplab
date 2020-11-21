@@ -26,6 +26,7 @@ public class Schedule {
         for (int i = 0; i < lessons.size(); i++){
             timetable.add(lessons.get(i));
         }
+        registered.add(index_);
         return true;
     }
 
@@ -35,6 +36,7 @@ public class Schedule {
         for (int i = 0; i < lessons.size(); i++){
             this.timetable.remove(lessons.get(i));
         }
+        registered.remove(index_);
     }
 
     private Boolean checkClash(Lesson new_, Lesson old_){
