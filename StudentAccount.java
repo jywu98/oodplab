@@ -49,7 +49,7 @@ public class StudentAccount extends UserAccount{
 		return true;
 	}
 	
-	public void getSchedule(){
+	public Schedule getSchedule(){
 		return this.schedule;
 	}
 	
