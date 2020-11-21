@@ -18,4 +18,8 @@ public class Lesson{
         this.startTime = startTime;
         this.endTime = endTime;
     }
+    
+    public void printDetails(){
+        System.out.println("Class: " + type.name() + " , Day: " + day + ", Time: " + startTime.toString() + "-" + endTime.toString() + " , Week: " + week);
+    } 
 }
