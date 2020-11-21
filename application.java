@@ -134,16 +134,26 @@ public class application {
 						
 						switch(choice2) {
 							case 1:
+								ArrayList<Index> courses = myUser.getSchedule().getRegistered();
+								for (int i = 0; i < course.size(); i++){
+									Index current = course.get(i);
+									println(current.getCourse().getCourseCode() + ", " + current.getCourse().getAU() + " AU, " + current.getIndex() + ", Registered");
+								}
+								ArrayList<Index> waitlist = myUser.getSchedule().getWaiting();
+								for (int i = 0; i < waitlist.size(); i++){
+									Index current = waitlist.get(i);
+									println(current.getCourse().getCourseCode() + ", " + current.getCourse().getAU() + " AU, " + current.getIndex() + ", Waitlist");
+								}
 								break;
 							case 2:
 								System.out.println("Enter your current index number: ");
 								int current = sc.nextInt();
 								Index currentIndex = indexlist.getIndex(current);
-								String coursecode = currentIndex.course.getCourseCode();
+								String coursecode = currentIndex.getCourse().getCourseCode();
 								System.out.println("Enter index number you would like to change to: ");
 								int new_ = sc.nextInt();
 								Index newIndex = indexlist.getIndex(new_);
-								if (newIndex.course.getCourseCode() != coursecode){
+								if (newIndex.getCourse().getCourseCode() != coursecode){
 									System.out.println("Error - Index entered is not from the same course");
 									break;
 								}
