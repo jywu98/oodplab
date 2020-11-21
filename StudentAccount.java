@@ -6,15 +6,18 @@ public class StudentAccount extends UserAccount{
 
 	protected int auLimit;
 	protected String matricnumber;
+	protected Schedule schedule;
 	
 	public StudentAccount() {
 		super(); auLimit = 24; matricnumber = "";
+		Schedule schedule = new Schedule(matricnumber);
 	}
 	
 	
 	public StudentAccount(String username, String password, boolean admin, String name, String gender, String nationality, String email, int auLimit, String matricnumber)
 	{
 		super(username, password, admin, name, gender, nationality, email); this.auLimit = auLimit; this.matricnumber = matricnumber;
+		Schedule schedule = new Schedule(matricnumber);
 	}
 	
 	public void checkCourse() {
@@ -36,16 +39,19 @@ public class StudentAccount extends UserAccount{
 	}
 	
 	
-	public void switchIndex(String courseCode)
+	public Boolean switchIndex(Index currentIndex, Index newIndex)
 	{
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter coursecode you wish to switch to: ");
-		
+		schedule.dropCourse(currentIndex);
+		Boolean valid = schedule.addCourse(newIndex);
+		if (valid == false){
+			return false;
+		}
+		return true;
 	}
 	
 	public void swapIndex(int index)
 	{
-		
+	
 	}
 	
 	
