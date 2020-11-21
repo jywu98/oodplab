@@ -57,12 +57,15 @@ public class Index {
 			StudentAccount newstudent = waitlist.get(0);
 			registeredStudents.add(newstudent);
 			waitlist.remove(newstudent);
+			newstudent.getSchedule().unwait(this);
+			/* need to add addcourse code here */
 			/* send email notif here */
 		}
 	}
 	
 	public void waitStudent(StudentAccount student){
 		waitlist.add(student);
+		
 	}
 	
 	public void unwaitStudent(StudentAccount student){
