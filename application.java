@@ -147,6 +147,10 @@ public class application {
 									System.out.println("Error - Index entered is not from the same course");
 									break;
 								}
+								if (newIndex.getVacancies() <= 0){
+									System.out.println("Error - Index entered is already full");
+									break;
+								}	
 								System.out.println("Please confirm the change in index for " + coursecode + ": ");
 								System.out.println("Current index: ");
 								currentIndex.printDetails();
@@ -158,7 +162,13 @@ public class application {
 								if (choice3 == 2){
 									break;
 								}
-								myUser.switchIndex(currentIndex, newIndex);
+								Boolean valid = myUser.switchIndex(currentIndex, newIndex);
+								if (valid == false){
+									break;
+								}
+								currentIndex.dropStudent(myUser);
+								newIndex.registerStudent(myUser);
+								System.out.println("Successfully changed " + currentIndex.getIndex() + " to " + newIndex.getIndex());
 								break;
 						}
 						}
