@@ -4,11 +4,13 @@ public class Schedule {
     protected String matricnumber;
     protected ArrayList<Index> registered;
     protected ArrayList<Lesson> timetable;
+    protected ArrayList<Index> waiting;
 
     public Schedule(String matricnumber){
         this.matricnumber = matricnumber;
         registered = new ArrayList<Index>();
         timetable = new ArrayList<Lesson>();
+        waiting = new ArrayList<Index>();
     }
 
     public Boolean addCourse(Index index_){
@@ -51,4 +53,8 @@ public class Schedule {
     public ArrayList<Index> getRegistered(){
         return this.registered;
     }
+    
+    public ArrayList<Index> getWaiting(){
+        return this.waiting;
+    }    
 }
