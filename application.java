@@ -47,6 +47,7 @@ public class application {
 		userlist.createUserlist();
 		courseLinkList courselist = new courseLinkList();
 		courselist.createCourselist();
+		IndexMasterList indexlist = new IndexMasterList();
 		int choice;
 		int choice2;
 		Scanner sc = new Scanner(System.in);
@@ -132,8 +133,32 @@ public class application {
 						choice2 = sc.nextInt();
 						
 						switch(choice2) {
-						case 1:
-							break;
+							case 1:
+								break;
+							case 2:
+								System.out.println("Enter your current index number: ");
+								int current = sc.nextInt();
+								Index currentIndex = indexlist.getIndex(current);
+								String coursecode = currentIndex.course.getCourseCode();
+								System.out.println("Enter index number you would like to change to: ");
+								int new_ = sc.nextInt();
+								Index newIndex = indexlist.getIndex(new_);
+								if (newIndex.course.getCourseCode() != coursecode){
+									System.out.println("Error - Index entered is not from the same course");
+									break;
+								}
+								System.out.println("Please confirm the change in index for " + coursecode + ": ");
+								System.out.println("Current index: ");
+								currentIndex.printDetails();
+								System.out.println("New index: ");
+								newIndex.printDetails();
+								System.out.println("1. Confirm change");
+								System.out.println("2. Cancel");
+								int choice3 = sc.nextInt();
+								if (choice3 == 2){
+									break;
+								}
+								myUser.switchIndex(currentIndex, newIndex);
 						}
 						}
 						while (choice2 < 4);
