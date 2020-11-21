@@ -83,5 +83,12 @@ public class Index {
 			StudentAccount current = registeredStudents.get(i);
 			System.out.println(current.getName() + ", " + current.getGender() + ", " + current.getNationality());
 		}	
+	}
+	
+	public void printDetails(){
+		System.out.println(this.index);
+		for (int i = 0; i < indexLessons.size(); i++){
+			indexLessons.get(i).printDetails;
+		}	
 	}	
 }
