@@ -49,6 +49,10 @@ public class StudentAccount extends UserAccount{
 		return true;
 	}
 	
+	public void getSchedule(){
+		return this.schedule;
+	}
+	
 	public void swapIndex(int index)
 	{
 	
