@@ -20,10 +20,16 @@ public class Schedule {
             Lesson selected = lessons.get(i);
             for (int j = 0; j < timetable.size(); j++){
                 if (checkClash(selected, timetable.get(j)) == false){
-                    System.out.println("Error - there is a clash");
+                    System.out.println("Error - there is a clash with another registered course");
                     return false;
                 }
             }
+            for (int k = 0; k < timetable.size(); k++){
+                if (checkClash(selected, waiting.get(j)) == false){
+                    System.out.println("Error - there is a clash with an index in your waitlist");
+                    return false;
+                }
+            }    
         }
         for (int i = 0; i < lessons.size(); i++){
             timetable.add(lessons.get(i));
