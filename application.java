@@ -170,6 +170,49 @@ public class application {
 								newIndex.registerStudent(myUser);
 								System.out.println("Successfully changed " + currentIndex.getIndex() + " to " + newIndex.getIndex());
 								break;
+							case 3:
+								System.out.println("Enter your current index number: ");
+								int current = sc.nextInt();
+								Index currentIndex = indexlist.getIndex(current);
+								System.out.println("Enter your friend's index number: ");
+								int new_ = sc.nextInt();
+								Index newIndex = indexlist.getIndex(new_);
+								if (newIndex.course.getCourseCode() != coursecode){
+									System.out.println("Error - Index entered is not from the same course");
+									break;
+								}
+								System.out.println("Please enter your friend's login details: ");
+								UserAccount friend = findUser(userlist);
+								String password = promptPassword();
+								if (friend.authenticatePassword(password) == false){
+									System.out.println("Error - invalid password");
+									break;
+								}
+								ArrayList<Index> friendcourses = friend.getSchedule().getRegistered();
+								boolean error = false;
+								for (int i = 0; i < friendcourses.size(); i++){
+									if (friendcourses.get(i) == newIndex){
+										break;
+									}
+									error = true;
+								}
+								if (error){
+									System.out.println("Error - friend does not take selected index");
+									break;
+								}
+								Boolean uservalid = myUser.switchIndex(current, newIndex);
+								if (uservalid == false){
+									break;
+								}
+								Boolean friendvalid = friend.switchIndex(newIndex, current);
+								if (friendvalid == false){
+									uservalid = myUser.switchIndex(newIndex, current);
+									break;
+								}
+								current.swapStudent(friend, myUser);
+								newIndex.swapStudent(myUser, friend);
+								System.out.println("Successfully swapped index");
+								break;
 						}
 						}
 						while (choice2 < 4);
