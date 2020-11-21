@@ -90,5 +90,9 @@ public class Index {
 		for (int i = 0; i < indexLessons.size(); i++){
 			indexLessons.get(i).printDetails;
 		}	
+	}
+	
+	public Course getCourse(){
+		return this.course;
 	}	
 }
