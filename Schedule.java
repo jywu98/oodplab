@@ -11,7 +11,7 @@ public class Schedule {
         timetable = new ArrayList<Lesson>();
     }
 
-    public void addCourse(Index index_){
+    public Boolean addCourse(Index index_){
         registered.add(index_);
         ArrayList<Lesson> lessons = index_.getLessons();
         for (int i = 0; i < lessons.size(); i++){
@@ -19,13 +19,14 @@ public class Schedule {
             for (int j = 0; j < timetable.size(); j++){
                 if (checkClash(selected, timetable.get(j)) == false){
                     System.out.println("Error - there is a clash");
-                    return; /*maybe return false here?*/
+                    return false;
                 }
             }
         }
         for (int i = 0; i < lessons.size(); i++){
             timetable.add(lessons.get(i));
         }
+        return true;
     }
 
     public void dropCourse(Index index_){
