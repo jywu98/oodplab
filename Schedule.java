@@ -47,4 +47,8 @@ public class Schedule {
         }
         return true;
     }
+    
+    public ArrayList<Index> getRegistered(){
+        return this.registered;
+    }
 }
