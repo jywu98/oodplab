@@ -56,5 +56,13 @@ public class Schedule {
     
     public ArrayList<Index> getWaiting(){
         return this.waiting;
+    }
+    
+    public void wait(Index index_){
+        waiting.add(index_);
+    }
+    
+    public void unwait(Index index_){
+        waiting.remove(index_);
     }    
 }
