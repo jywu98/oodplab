@@ -20,6 +20,6 @@ public class Lesson{
     }
     
     public void printDetails(){
-        System.out.println("Class: " + type.name() + " , Day: " + day + ", Time: " + startTime.toString() + "-" + endTime.toString() + " , Week: " + week);
+        System.out.println("Class: " + type.name() + ", Day: " + day + ", Time: " + startTime.toString() + "-" + endTime.toString() + ", Week: " + week);
     } 
 }
