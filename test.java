@@ -318,13 +318,13 @@ public class StudentAccount{
 			System.out.println("Error - friend does not take selected index");
 			return;
 		}
-		Boolean uservalid = myUser.switchIndex(current, newIndex);
+		Boolean uservalid = myUser.switchIndex(current, selected);
 		if (uservalid == false){
 			return;
 		}
-		Boolean friendvalid = friend.switchIndex(newIndex, current);
+		Boolean friendvalid = friend.switchIndex(selected, current);
 		if (friendvalid == false){
-			uservalid = myUser.switchIndex(newIndex, current);
+			uservalid = this.student.switchIndex(selected, current);
 			return;
 		}
 		current.swapStudent(friend, this.student);
