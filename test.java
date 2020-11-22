@@ -159,5 +159,41 @@ public class StudentAccount{
 			println(current.getCourseCode() + ", " /*+ current.getCourse().getAU() + " AU, "*/ + current.getIndex() + ", Waitlist");
 		}
 		return;
+	}
+	
+	public void checkVacancies(){
+		for (int i = 0; i < schoollist.size(); i++){
+			if (schoollist.get(i).getSchoolname().equals(this.student.getSchool())){
+				School mySchool = schoollist.get(i);
+			}	
+		}
+		
+		mySchool.printCourselist();
+		ArrayList<Course> courselist = mySchool.getCourselist();
+		System.out.println("Please enter the course to check: ");
+		Scanner sc = new Scanner(System.in);
+		String coursecode = sc.next();
+		
+		for (int i = 0; i < courselist.size(); i++){
+			if (courselist.get(i).getCourseCode().equals(coursecode)){
+				Course chosen = courselist.get(i);
+				break;
+			}
+		}
+		
+		chosen.printIndexlist();
+		ArrayList<Index> indexlist = chosen.getIndexlist();
+		System.out.println("Please enter the index to check: ");
+		int index_ = sc.nextInt();
+		
+		for (int i = 0; i < indexlist.size(); i++){
+			if (indexlist.get(i).getIndex().equals(index_)){
+				Index selected = indexlist.get(i);
+				break;
+			}
+		}
+		
+		System.out.println(select + ": " + selected.getVacancies() + " vacancies");
+		return;
 	}	
 }
