@@ -195,5 +195,68 @@ public class StudentAccount{
 		
 		System.out.println(select + ": " + selected.getVacancies() + " vacancies");
 		return;
+	}
+	
+	public void changeIndex(){
+		ArrayList<Index> registered = this.student.getSchedule().getRegistered();
+		System.out.println("Currently registered courses: ");
+		for (int i = 0; i < registered.size(); i++){
+			Index current = registered.get(i);
+			System.out.println(current.getCourseCode() + " " + current.getIndex() + " Registered");
+		}
+		System.out.println("Please enter the index you wish to change: ");
+		Scanner sc = new Scanner(System.in);
+		int change = sc.nextInt();
+		for (int i = 0; i < registered.size(); i++){
+			if (registered.get(i).getIndex() == change){
+				Index current = registered.get(i);
+				break;
+			}
+		}
+		for (int i = 0; i < schoollist.size(); i++){
+			if (schoollist.get(i).getSchoolname().equals(this.student.getSchool())){
+				School mySchool = schoollist.get(i);
+			}	
+		}
+		ArrayList<Course> courselist = mySchool.getCourselist();
+		for (int i = 0; i < courselist.size(); i++){
+			if (courselist.get(i).getCourseCode().equals(current.getCourseCode())){
+				Course chosen = courselist.get(i);
+				break;
+			}
+		}
+		System.out.println("Available indexes for course: ");
+		chosen.printIndexlist();
+		ArrayList<Index> indexlist = chosen.getIndexlist();
+		System.out.println("Please enter the index you wish to change to: ");
+		int index_ = sc.nextInt();
+		for (int i = 0; i < indexlist.size(); i++){
+			if (indexlist.get(i).getIndex().equals(index_)){
+				Index selected = indexlist.get(i);
+				break;
+			}
+		}
+		if (selected.getVacancies() <= 0){
+			System.out.println("Error - Index entered is already full");
+			return;
+		}
+		System.out.println("Please confirm the change in index for " + coursecode + ": ");
+		System.out.println("Current index: ");
+		current.printDetails();
+		System.out.println("New index: ");
+		selected.printDetails();
+		System.out.println("1. Confirm change");
+		System.out.println("2. Cancel");
+		int choice = sc.nextInt();
+		if (choice >= 2){
+			return;
+		}
+		Boolean valid = this.student.switchIndex(current, selected);
+		if (valid == false){
+			return;
+		}
+		current.dropStudent(myUser);
+		new.registerStudent(myUser);
+		System.out.println("Successfully changed " + currentIndex.getIndex() + " to " + newIndex.getIndex());
 	}	
 }
