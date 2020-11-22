@@ -147,5 +147,17 @@ public class StudentAccount{
 		}
 	}
 	
-	
+	public void checkCourse(){
+		ArrayList<Index> courses = student.getSchedule().getRegistered();
+		for (int i = 0; i < course.size(); i++){
+			Index current = course.get(i);
+			println(current.getCourseCode() + ", " /*+ current.getCourse().getAU() + " AU, "*/ + current.getIndex() + ", Registered");
+		}
+		ArrayList<Index> waitlist = student.getSchedule().getWaiting();
+		for (int i = 0; i < waitlist.size(); i++){
+			Index current = waitlist.get(i);
+			println(current.getCourseCode() + ", " /*+ current.getCourse().getAU() + " AU, "*/ + current.getIndex() + ", Waitlist");
+		}
+		return;
+	}	
 }
