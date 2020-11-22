@@ -1,12 +1,12 @@
 public class Registration{
 	private boolean checkClash(Lesson new_, Lesson old_){
-        if ((new_.week == old_.week) && (new_.day == old_.day)){
-            if ((new_.startTime.isBefore(old_.endTime)) && (new_.endTime.isAfter(old_.startTime))){
-                return false;
-            }
-        }
+        	if ((new_.week == old_.week) && (new_.day == old_.day)){
+            		if ((new_.startTime.isBefore(old_.endTime)) && (new_.endTime.isAfter(old_.startTime))){
+                	return false;
+            		}
+        	}
         return true;
-    }
+    	}
 	
 	public boolean registerCourse(Student student, Index index){
 		Schedule schedule = student.getSchedule();
