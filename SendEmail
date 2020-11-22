@@ -37,8 +37,8 @@ public class SendMailTLS {
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse("")); // to be added an email addr
 			message.setSubject("Testing Subject");
-			message.setText("Dear Mail Crawler,"
-				+ "\n\n No spam to my email, please!");
+			message.setText("Dear Student *insert ID/name here,"
+				+ "\n\n You have been added to the course *insert Course name here!");
 
 			Transport.send(message);
 
