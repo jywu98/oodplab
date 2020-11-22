@@ -97,7 +97,7 @@ public class StudentAccount{
 				System.out.println("Exiting to main menu...");
 				return;
 			}
-			select.wait(this.student);
+			select.waitStudent(this.student);
 			student.getSchedule().wait(selected);
 			System.out.println("Successfully added " + selected.getIndex() + " to your waitlist.");
 			return;
@@ -107,8 +107,44 @@ public class StudentAccount{
 		if (!success){
 			return;
 		}
+		selected.registerStudent(this.student);
 		System.out.println("Successfully registered for " + selected.getIndex() + ".");
 		return;
+	}
+	
+	public void dropCourse(){
+		ArrayList<Index> registered = this.student.getSchedule().getRegistered();
+		ArrayList<Index> waiting = this.student.getSchedule().getWaiting();
+		System.out.println("Currently chosen courses: ");
+		for (int i = 0; i < registered.size(); i++){
+			Index current = registered.get(i);
+			System.out.println(current.getCourseCode() + " " + current.getIndex() + " Registered");
+		}
+		for (int i = 0; i < waiting.size(); i++){
+			Index current = waiting.get(i);
+			System.out.println(current.getCourseCode() + " " + current.getIndex() + " On Waitlist");
+		}
+		System.out.println("Please enter the index you wish to drop: ");
+		Scanner sc = new Scanner(System.in);
+		int drop = sc.nextInt();
+		for (int i = 0; i < registered.size(); i++){
+			if (registered.get(i).getIndex() == drop){
+				Index index_ = registered.get(i);
+				index_.dropStudent(this.student);
+				student.getSchedule().dropCourse(index_);
+				System.out.println("Successfully dropped " + index_.getIndex() + ".");
+				return;
+			}
+		}
+		for (int i = 0; i < waiting.size(); i++){
+			if (waiting.get(i).getIndex() == drop){
+				Index index_ = waiting.get(i);
+				index_.unwaitStudent(this.student);
+				student.getSchedule().unwait(index_);
+				System.out.println("Successfully dropped " + index_.getIndex() + ".");
+				return;
+			}
+		}
 	}
 	
 	
