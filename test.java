@@ -258,5 +258,78 @@ public class StudentAccount{
 		current.dropStudent(myUser);
 		new.registerStudent(myUser);
 		System.out.println("Successfully changed " + currentIndex.getIndex() + " to " + newIndex.getIndex());
+	}
+	
+	public void swapIndex(){
+		ArrayList<Index> registered = this.student.getSchedule().getRegistered();
+		System.out.println("Currently registered courses: ");
+		for (int i = 0; i < registered.size(); i++){
+			Index current = registered.get(i);
+			System.out.println(current.getCourseCode() + " " + current.getIndex() + " Registered");
+		}
+		System.out.println("Please enter the index you wish to change: ");
+		Scanner sc = new Scanner(System.in);
+		int change = sc.nextInt();
+		for (int i = 0; i < registered.size(); i++){
+			if (registered.get(i).getIndex() == change){
+				Index current = registered.get(i);
+				break;
+			}
+		}
+		for (int i = 0; i < schoollist.size(); i++){
+			if (schoollist.get(i).getSchoolname().equals(this.student.getSchool())){
+				School mySchool = schoollist.get(i);
+			}	
+		}
+		ArrayList<Course> courselist = mySchool.getCourselist();
+		for (int i = 0; i < courselist.size(); i++){
+			if (courselist.get(i).getCourseCode().equals(current.getCourseCode())){
+				Course chosen = courselist.get(i);
+				break;
+			}
+		}
+		System.out.println("Available indexes for course: ");
+		chosen.printIndexlist();
+		ArrayList<Index> indexlist = chosen.getIndexlist();
+		System.out.println("Please enter the index you wish to change to: ");
+		int index_ = sc.nextInt();
+		for (int i = 0; i < indexlist.size(); i++){
+			if (indexlist.get(i).getIndex().equals(index_)){
+				Index selected = indexlist.get(i);
+				break;
+			}
+		}
+		System.out.println("Please enter your friend's login details: ");
+		UserAccount friend = findUser(userlist);
+		String password = promptPassword();
+		if (friend.authenticatePassword(password) == false){
+			System.out.println("Error - invalid password");
+			return;
+		}
+		ArrayList<Index> friendcourses = friend.getSchedule().getRegistered();
+		boolean error = true;
+		for (int i = 0; i < friendcourses.size(); i++){
+			if (friendcourses.get(i) == newIndex){
+				error = false;
+				break;
+			}
+		}
+		if (error){
+			System.out.println("Error - friend does not take selected index");
+			return;
+		}
+		Boolean uservalid = myUser.switchIndex(current, newIndex);
+		if (uservalid == false){
+			return;
+		}
+		Boolean friendvalid = friend.switchIndex(newIndex, current);
+		if (friendvalid == false){
+			uservalid = myUser.switchIndex(newIndex, current);
+			return;
+		}
+		current.swapStudent(friend, this.student);
+		newIndex.swapStudent(this.student, friend);
+		System.out.println("Successfully swapped index");
+		return;
 	}	
 }
