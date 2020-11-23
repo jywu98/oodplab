@@ -49,4 +49,5 @@ public class SendMailTLS {
 		}
 	}
 }
-// you will need to set "Allow less secure apps access" on your google account settings
+// you will need add the javax.mail jar file from the zipfile on ntu to your classpath
+// also need to set "allow less secure app access" on your google account settings
