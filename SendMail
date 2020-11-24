@@ -14,8 +14,8 @@ public class SendMail {
 
 	public static void main(String[] args) {
 
-		final String username = " "; // to be added
-		final String password = " "; // to be added
+		final String username = "NTUStudentRegistree@gmail.com"; // to be added
+		final String password = "1Qa2ws3ed"; // to be added
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -35,7 +35,7 @@ public class SendMail {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("from-email@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
-				InternetAddress.parse("")); // to be added an email addr
+				InternetAddress.parse("NTUStudentRegistree@gmail.com")); // to be added an email addr
 			message.setSubject("MySTARS");
 			message.setText("Dear Student *insert ID/name here,"
 				+ "\n\n You have been added to the course *insert Course name here!");
