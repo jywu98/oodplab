@@ -36,7 +36,7 @@ public class SendMail {
 			message.setFrom(new InternetAddress("from-email@gmail.com"));
 			message.setRecipients(Message.RecipientType.TO,
 				InternetAddress.parse("")); // to be added an email addr
-			message.setSubject("Testing Subject");
+			message.setSubject("MyStars");
 			message.setText("Dear Student *insert ID/name here,"
 				+ "\n\n You have been added to the course *insert Course name here!");
 
